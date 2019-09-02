@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { MarkovGenerator } from 'markov/markovGenerator.type';
+
 @Injectable({
   providedIn: 'root'
 })
