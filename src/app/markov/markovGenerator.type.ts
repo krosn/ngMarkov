@@ -18,7 +18,6 @@ export class MarkovGenerator {
 
     constructor(details: MarkovDetails) {
         this.details = (details !== null) ? details : new MarkovDetails();
-        this.rules[this.startToken] = [];
         this.starters = [];
     }
 
@@ -33,6 +32,9 @@ export class MarkovGenerator {
         for (const sentence of sentences) {
             this.processSentence(sentence);
         }
+
+        console.log(this.starters);
+        console.log(this.rules);
     }
 
     generateSentence(): string {
@@ -48,7 +50,7 @@ export class MarkovGenerator {
 
             const newWord = sample(this.rules[combinedWords]);
 
-            if (newWord === this.endToken) {
+            if (newWord === this.endToken || newWord === undefined) {
                 break;
             }
 
