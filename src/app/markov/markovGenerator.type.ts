@@ -22,7 +22,6 @@ export class MarkovGenerator {
     }
 
     private get endToken(): string { return '###END###'; }
-    private get startToken(): string { return '###START###'; }
 
     addText(sourceName: string, textToAdd: string): void {
         this.details.sourceNames.push(sourceName);
@@ -82,7 +81,7 @@ export class MarkovGenerator {
         const window: string[] = words.slice(0, this.rank);
         this.starters.push(window);
 
-        let index = this.rank - 1;
+        let index = this.rank;
 
         do {
             const word = words[index];
