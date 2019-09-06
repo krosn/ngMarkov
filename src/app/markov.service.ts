@@ -12,14 +12,15 @@ export class MarkovService {
   private markovDetailsSubject = new BehaviorSubject<MarkovDetails[]>([]);
 
   constructor() {
-    this.markovGenerators = JSON.parse(localStorage.getItem(this.storageKey)) || [];
+    this.markovGenerators = []; //JSON.parse(localStorage.getItem(this.storageKey)) || [];
+    const testElem = this.createGenerator('test');
   }
 
   get storageKey(): string { return 'markovGenerators'; }
 
   createGenerator(title: string): MarkovGenerator {
     const newDetails: MarkovDetails = {
-      title: '',
+      title: title,
       id: this.nextId++,
       sourceNames: [],
       wordCount: 0,

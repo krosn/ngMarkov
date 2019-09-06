@@ -13,7 +13,7 @@ export class MarkovGenerator {
     details: MarkovDetails;
     maxSentenceLength = 30;
     rank = 2;
-    private rules: Map<string, string[]>;
+    private rules = new Map<string, string[]>();
     private starters: string[][];
 
     constructor(details: MarkovDetails) {
@@ -112,7 +112,7 @@ export class MarkovGenerator {
     private sentencesFromText(text: string): string[] {
         // TODO: See if there is a natural language tool for JS
         // or redo this to call some back-end
-        const sentences = text.match('/[^\.!\?]+[\.!\?]+/g');
+        const sentences = text.match(/[^\.!\?]+([\.!\?]+|$)+/g);
         return sentences;
     }
 

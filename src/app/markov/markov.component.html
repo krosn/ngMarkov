@@ -1,3 +1,18 @@
-<p>
-  markov works!
-</p>
+<div class="markovs">
+  <div class="detail-container">
+      <ul class="detail-list">
+        <li *ngFor='let detail of details | async'>
+          <p>{{detail.title}}</p>
+          <p>{{detail.generatedSentences}}</p>
+        </li>
+      </ul>
+  </div>
+  <div *ngIf='currentGenerator' class="input-container">
+      <textarea class="input-text" [(ngModel)]="inputText"></textarea>
+      <button class="add-text-btn" (click)="onAddText()">Add Source Material</button>
+    </div>
+  <div *ngIf='currentGenerator' class="output-container">
+    <textarea class="output-text">{{outputText}}</textarea>
+    <button class="generate-btn" (click)="onGenerate()">Generate Sentence</button>
+  </div>
+</div>
