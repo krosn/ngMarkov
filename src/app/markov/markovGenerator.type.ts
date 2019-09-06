@@ -1,6 +1,8 @@
 import { sample } from 'lodash';
 
 export class MarkovDetails {
+    id: number;
+    title: string;
     sourceNames: string[];
     wordCount: number;
     sentenceCount: number;
@@ -9,19 +11,13 @@ export class MarkovDetails {
 
 export class MarkovGenerator {
     details: MarkovDetails;
-    id: number;
-    maxSentenceLength: number;
-    rank: number;
-    title: string;
-    private rules: Map<string, string[]>; // Might need to use single string as key and just concat them
+    maxSentenceLength = 30;
+    rank = 2;
+    private rules: Map<string, string[]>;
     private starters: string[][];
 
-    constructor(title: string, id: number, rank: number, maxSentenceLength: number = 30) {
-        this.details = new MarkovDetails();
-        this.id = id;
-        this.title = title;
-        this.maxSentenceLength = maxSentenceLength;
-        this.rank = rank;
+    constructor(details: MarkovDetails) {
+        this.details = (details !== null) ? details : new MarkovDetails();
         this.rules[this.startToken] = [];
         this.starters = [];
     }
@@ -64,7 +60,7 @@ export class MarkovGenerator {
             window.push(newWord);
         }
 
-        this.details.generatedSentences += 1;
+        this.details.sentenceCount += 1;
 
         return sentence;
     }
@@ -117,7 +113,6 @@ export class MarkovGenerator {
         // TODO: See if there is a natural language tool for JS
         // or redo this to call some back-end
         const sentences = text.match('/[^\.!\?]+[\.!\?]+/g');
-        this.details.sentenceCount += sentences.length;
         return sentences;
     }
 
