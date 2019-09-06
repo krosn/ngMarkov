@@ -28,6 +28,10 @@ export class MarkovComponent implements OnInit {
   }
 
   onGenerate(): void {
+    if (this.currentGenerator.details.wordCount === 0) {
+       alert('Generator needs input first');
+    }
+
     this.outputText += this.currentGenerator.generateSentence() + ' ';
   }
 
