@@ -47,14 +47,14 @@ export class MarkovGenerator {
                 break;
             }
 
-            const newWord = sample(this.rules[combinedWords]);
+            const newWord = sample(this.rules.get(combinedWords));
 
             if (newWord === this.endToken || newWord === undefined) {
                 break;
             }
 
             // TODO: Spacing logic to deal with punctuation
-            sentence += newWord;
+            sentence += ' ' + newWord;
 
             // Cycle in new word
             window.shift();
