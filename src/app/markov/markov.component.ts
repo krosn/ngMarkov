@@ -12,8 +12,8 @@ import { MarkovDetails, MarkovGenerator } from './markovGenerator.type';
 export class MarkovComponent implements OnInit {
   details = new BehaviorSubject<MarkovDetails[]>([]);
   currentGenerator: MarkovGenerator;
-  inputText: '';
-  outputText: '';
+  inputText = '';
+  outputText = '';
 
   constructor(private markovService: MarkovService) { }
 
@@ -32,7 +32,9 @@ export class MarkovComponent implements OnInit {
        alert('Generator needs input first');
     }
 
-    this.outputText += this.currentGenerator.generateSentence() + ' ';
+    const newSentence = this.currentGenerator.generateSentence();
+
+    this.outputText = `${this.outputText} ${newSentence}`;
   }
 
 }
