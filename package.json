@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "http-server ./src -a 0.0.0.0 -p 8000 -c-1 -o",
+    "start": "http-server ./dist/ngMarkov -a 0.0.0.0 -p 8000 -c-1 -o",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
