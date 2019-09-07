@@ -79,27 +79,20 @@ export class MarkovGenerator {
         }
 
         const window: string[] = words.slice(0, this.rank);
-        this.starters.push(window);
+        this.starters.push(window.slice());
 
-        let index = this.rank;
+        for (let index = this.rank; index < words.length; index++) {
+            const nextWord = words[index];
 
-        do {
-            const word = words[index];
+            // Add the next word as an option to follow the sequence of words in window
+            this.setDefault(this.rules, this.combineWordsForRule(window), []).push(nextWord);
 
             window.shift();
-            window.push(word);
-            const windowCombined = this.combineWordsForRule(window);
+            window.push(nextWord);
+        }
 
-            if (index === words.length - 1) {
-                // Add the end token as an option to follow the sequence of words in window
-                this.setDefault(this.rules, windowCombined, []).push(this.endToken);
-            } else {
-                // Add the next word as an option to follow the sequence of words in window
-                this.setDefault(this.rules, windowCombined, []).push(words[index + 1]);
-            }
-
-            index += 1;
-        } while (index < words.length);
+        // Add the end token as an option to follow the sequence of words in window
+        this.setDefault(this.rules, this.combineWordsForRule(window), []).push(this.endToken);
     }
 
     private setDefault<Tkey, Tval>(map: Map<Tkey, Tval>, key: Tkey, defaultVal: Tval): Tval {
@@ -113,7 +106,7 @@ export class MarkovGenerator {
     private sentencesFromText(text: string): string[] {
         // TODO: See if there is a natural language tool for JS
         // or redo this to call some back-end
-        const sentences = text.match(/[^\.!\?]+([\.!\?]+|$)+/g);
+        const sentences = text.split(/(?<=[\.\?\!])\s+(?![a-z])/g);
         return sentences;
     }
 
