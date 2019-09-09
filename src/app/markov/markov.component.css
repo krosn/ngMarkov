@@ -1,0 +1,11 @@
+.details-container {
+    margin: auto;
+}
+
+form {
+    margin: auto;
+}
+
+textarea, input {
+    width: 70%;
+}
