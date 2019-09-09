@@ -10,4 +10,4 @@ This app uses http-server for hosting. To host, simply run `ng build` then `npm 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Design
-A diagram of the components and modules can be found here https://drive.google.com/open?id=1oNVPvZ1GOnIn_0d7ZePcRdTBPMP57JcY
+A diagram of the components and modules can be editted here https://www.draw.io/#G1oNVPvZ1GOnIn_0d7ZePcRdTBPMP57JcY and viewed publically here https://drive.google.com/open?id=1oNVPvZ1GOnIn_0d7ZePcRdTBPMP57JcY
