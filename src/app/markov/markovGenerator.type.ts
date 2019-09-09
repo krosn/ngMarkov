@@ -93,6 +93,8 @@ export class MarkovGenerator {
 
         // Add the end token as an option to follow the sequence of words in window
         this.setDefault(this.rules, this.combineWordsForRule(window), []).push(this.endToken);
+
+        this.details.sentenceCount += 1;
     }
 
     private setDefault<Tkey, Tval>(map: Map<Tkey, Tval>, key: Tkey, defaultVal: Tval): Tval {
