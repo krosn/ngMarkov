@@ -11,23 +11,23 @@
     <button class="btn btn-primary">Activate</button>
   </div>
   <div class="row" *ngIf='currentGenerator'>
-    <form class="col-md-6">
+    <div class="col-md-6">
       <div class="form-group">
         <label for="title-input">Title of Input:</label>
-        <input type="text" class="form-control" id="title-input" placeholder="Enter a title...">
+        <input type="text" [(ngModel)]="inputName" class="form-control" id="title-input" placeholder="Enter a title...">
       </div>
       <div class="form-group input-container">
         <label for="input-text">Input:</label>
-        <textarea class="form-control" [(ngModel)]="inputText" name="input-text" id="input-text"></textarea>
+        <textarea [(ngModel)]="inputText" class="form-control" id="input-text"></textarea>
         <button class="add-text-btn" (click)="onAddText()">Add Source Material</button>
       </div>
-    </form>
-    <form class="col-md-6">
+    </div>
+    <div class="col-md-6">
       <div class="form-group output-container">
         <label for="output-text">Output:</label>
         <textarea class="form-control" id="output-text">{{outputText}}</textarea>
         <button class="generate-btn" (click)="onGenerate()">Generate Sentence</button>
       </div>
-    </form>
+    </div>
   </div>
 </div>
