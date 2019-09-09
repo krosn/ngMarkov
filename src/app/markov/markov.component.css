@@ -1,5 +1,14 @@
+.card {
+    margin: auto 2rem;
+}
+
 .details-container {
     margin: auto;
+    padding: 1rem;
+}
+
+.generator-io {
+    margin: 1rem;
 }
 
 form {

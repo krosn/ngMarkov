@@ -1,16 +1,23 @@
 <div class="markovs">
-  <div *ngFor='let detail of details | async'
-        class="card details-container" 
-        style="width: 18rem;">
-    <div class="card-header">{{detail.title}}</div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Source words: {{detail.wordCount}}</li>
-      <li class="list-group-item">Source Sentences: {{detail.sentenceCount}}</li>
-      <li class="list-group-item">Generated Sentences: {{detail.generatedSentences}}</li>
-    </ul>
-    <button class="btn btn-primary">Activate</button>
+  <div class="details-container row">
+    <div *ngFor='let detail of details | async' class="card" style="width: 18rem;">
+      <div class="card-header">{{detail.title}}</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Sources: {{detail.sourceNames.join(', ')}}</li>
+        <li class="list-group-item">Source Words: {{detail.wordCount}}</li>
+        <li class="list-group-item">Source Sentences: {{detail.sentenceCount}}</li>
+        <li class="list-group-item">Generated Sentences: {{detail.generatedSentences}}</li>
+      </ul>
+      <button class="btn btn-primary">Activate</button>
+    </div>
+    <div class="card" style="width: 8rem;">
+      <div class="card-body" style="font-size: 4rem; color: dodgerblue;">
+        <!--Add logic here for creating a new generator-->
+        <i class="fa fa-plus-circle"></i>
+      </div>
+    </div>
   </div>
-  <div class="row" *ngIf='currentGenerator'>
+  <div class="generator-io row" *ngIf='currentGenerator'>
     <div class="col-md-6">
       <div class="form-group">
         <label for="title-input">Title of Input:</label>
