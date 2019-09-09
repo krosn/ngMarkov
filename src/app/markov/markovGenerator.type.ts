@@ -61,7 +61,7 @@ export class MarkovGenerator {
             window.push(newWord);
         }
 
-        this.details.sentenceCount += 1;
+        this.details.generatedSentences += 1;
 
         return sentence;
     }

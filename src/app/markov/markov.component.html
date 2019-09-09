@@ -4,25 +4,30 @@
         style="width: 18rem;">
     <div class="card-header">{{detail.title}}</div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <p>Generated Sentences: {{detail.generatedSentences}}</p>
-      </li>
+      <li class="list-group-item">Source words: {{detail.wordCount}}</li>
+      <li class="list-group-item">Source Sentences: {{detail.sentenceCount}}</li>
+      <li class="list-group-item">Generated Sentences: {{detail.generatedSentences}}</li>
     </ul>
+    <button class="btn btn-primary">Activate</button>
   </div>
-  <form *ngIf='currentGenerator'>
-    <div class="form-group">
-      <label for="title-input">Title</label>
-      <input type="text" class="form-control" id="title-input" placeholder="Enter a title...">
-    </div>
+  <div class="row" *ngIf='currentGenerator'>
+    <form class="col-md-6">
+      <div class="form-group">
+        <label for="title-input">Title of Input:</label>
+        <input type="text" class="form-control" id="title-input" placeholder="Enter a title...">
+      </div>
       <div class="form-group input-container">
         <label for="input-text">Input:</label>
         <textarea class="form-control" [(ngModel)]="inputText" name="input-text" id="input-text"></textarea>
         <button class="add-text-btn" (click)="onAddText()">Add Source Material</button>
       </div>
+    </form>
+    <form class="col-md-6">
       <div class="form-group output-container">
         <label for="output-text">Output:</label>
         <textarea class="form-control" id="output-text">{{outputText}}</textarea>
         <button class="generate-btn" (click)="onGenerate()">Generate Sentence</button>
       </div>
-  </form>
+    </form>
+  </div>
 </div>

@@ -3,9 +3,11 @@
 }
 
 form {
-    margin: auto;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
 textarea, input {
     width: 70%;
+    margin: auto;
 }
