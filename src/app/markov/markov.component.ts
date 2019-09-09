@@ -12,6 +12,7 @@ import { MarkovDetails, MarkovGenerator } from './markovGenerator.type';
 export class MarkovComponent implements OnInit {
   details = new BehaviorSubject<MarkovDetails[]>([]);
   currentGenerator: MarkovGenerator;
+  inputName = '';
   inputText = '';
   outputText = '';
 
@@ -23,8 +24,8 @@ export class MarkovComponent implements OnInit {
   }
 
   onAddText(): void {
-    this.currentGenerator.addText('Unnamed', this.inputText);
-    this.inputText = '';
+    this.currentGenerator.addText(this.inputName, this.inputText);
+    this.inputName = this.inputText = '';
   }
 
   onGenerate(): void {
